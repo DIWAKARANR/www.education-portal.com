@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Educational Portal</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Main Selection -->
+        <div id="mainSelection" class="section active">
+            <h1 class="portal-title">Educational Portal</h1>
+            <div class="selection-buttons">
+                <button onclick="showSection('studentLogin')" class="animate-button">Student Login</button>
+                <button onclick="showSection('staffLogin')" class="animate-button">Staff Login</button>
+            </div>
+        </div>
+
+        <!-- Student Login -->
+        <div id="studentLogin" class="section">
+            <h2>Student Login</h2>
+            <div class="form-group">
+                <input type="text" id="studentId" placeholder="Register Number" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="studentPassword" placeholder="Password" required>
+            </div>
+            <button onclick="loginStudent()" class="login-btn">Login</button>
+            <button onclick="showSection('mainSelection')" class="back-btn">Back</button>
+            <p id="studentLoginError" class="error-message"></p>
+        </div>
+
+        <!-- Staff Login -->
+        <div id="staffLogin" class="section">
+            <h2>Staff Login</h2>
+            <div class="form-group">
+                <input type="text" id="staffId" placeholder="Staff ID" required>
+            </div>
+            <div class="form-group">
+                <input type="password" id="staffPassword" placeholder="Password" required>
+            </div>
+            <button onclick="loginStaff()" class="login-btn">Login</button>
+            <button onclick="showSection('mainSelection')" class="back-btn">Back</button>
+            <p id="staffLoginError" class="error-message"></p>
+        </div>
+
+        <!-- Student Dashboard -->
+        <div id="studentDashboard" class="section">
+            <div class="dashboard-header">
+                <h2>Welcome, <span id="studentName"></span></h2>
+                <button onclick="logout()" class="logout-btn">Logout</button>
+            </div>
+            <div class="dashboard-nav">
+                <button class="tab-btn active" onclick="switchTab(this, 'marks')">Marks</button>
+                <button class="tab-btn" onclick="switchTab(this, 'attendance')">Attendance</button>
+            </div>
+            <div id="marks" class="tab-content active">
+                <div class="card">
+                    <h3>Academic Performance</h3>
+                    <div id="marksContent" class="grades-grid"></div>
+                </div>
+            </div>
+            <div id="attendance" class="tab-content">
+                <div class="card">
+                    <h3>Attendance Record</h3>
+                    <div id="attendanceContent"></div>
+                    <div class="attendance-chart">
+                        <div id="attendanceBar" class="attendance-bar">
+                            <span id="attendancePercentage" class="attendance-percentage">0%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Staff Dashboard -->
+        <div id="staffDashboard" class="section">
+            <div class="dashboard-header">
+                <h2>Welcome, <span id="staffName"></span></h2>
+                <button onclick="logout()" class="logout-btn">Logout</button>
+            </div>
+            <div class="dashboard-nav">
+                <button class="tab-btn active" onclick="switchStaffTab(this, 'updateRecords')">Update Records</button>
+                <button class="tab-btn" onclick="switchStaffTab(this, 'manageStudents')">Manage Students</button>
+                <button class="tab-btn" onclick="switchStaffTab(this, 'manageSubjects')">Manage Subjects</button>
+            </div>
+
+            <!-- Update Records Tab -->
+            <div id="updateRecords" class="staff-tab-content active">
+                <div class="card">
+                    <h3>Update Student Records</h3>
+                    <div class="form-group">
+                        <select id="studentSelect" onchange="loadStudentData()">
+                            <option value="">Select Student</option>
+                        </select>
+                    </div>
+                    <div id="subjectInputs"></div>
+                    <div class="form-group">
+                        <label>Attendance (%)</label>
+                        <input type="number" id="attendanceInput" min="0" max="100">
+                    </div>
+                    <button onclick="updateStudentData()" class="update-btn">Update Records</button>
+                </div>
+            </div>
+
+            <!-- Manage Students Tab -->
+            <div id="manageStudents" class="staff-tab-content">
+                <div class="card">
+                    <h3>Add New Student</h3>
+                    <div class="form-group">
+                        <input type="text" id="newStudentId" placeholder="Student ID">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="newStudentName" placeholder="Student Name">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="newStudentPassword" placeholder="Password">
+                    </div>
+                    <button onclick="addNewStudent()" class="update-btn">Add Student</button>
+                </div>
+                <div class="card">
+                    <h3>Current Students</h3>
+                    <div id="studentsList" class="list-container"></div>
+                </div>
+            </div>
+
+            <!-- Manage Subjects Tab -->
+            <div id="manageSubjects" class="staff-tab-content">
+                <div class="card">
+                    <h3>Add New Subject</h3>
+                    <div class="form-group">
+                        <input type="text" id="newSubjectName" placeholder="Subject Name">
+                    </div>
+                    <button onclick="addNewSubject()" class="update-btn">Add Subject</button>
+                </div>
+                <div class="card">
+                    <h3>Current Subjects</h3>
+                    <div id="subjectsList" class="list-container"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
