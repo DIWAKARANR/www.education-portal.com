@@ -1,0 +1,221 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, Gold 0%, #50C878 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 100%;
+    max-width: 800px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Section Styles */
+.section {
+    display: none;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.section.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Headings */
+h1, h2, h3 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.portal-title {
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 2rem;
+}
+
+/* Form Elements */
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+input, select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Buttons */
+.animate-button, .login-btn, .back-btn, .logout-btn, .update-btn {
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    width: 100%;
+    margin: 10px 0;
+}
+
+.back-btn {
+    background: #718096;
+}
+
+.delete-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    background: #f56565;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Dashboard Elements */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.dashboard-nav {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.tab-btn {
+    padding: 10px 20px;
+    background: #e2e8f0;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: #4a5568;
+}
+
+.tab-btn.active {
+    background: #667eea;
+    color: white;
+}
+
+.card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+/* Grades Grid */
+.grades-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.subject-card {
+    background: #f7fafc;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+/* Attendance Chart */
+.attendance-chart {
+    margin-top: 20px;
+    background: #e2e8f0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.attendance-bar {
+    height: 20px;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    width: 0;
+    transition: width 1s ease-in-out;
+    position: relative;
+}
+
+.attendance-percentage {
+    position: absolute;
+    right: 10px;
+    color: white;
+    font-weight: bold;
+}
+
+/* List Containers */
+.list-container {
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Error Messages */
+.error-message {
+    color: #e53e3e;
+    text-align: center;
+    margin-top: 1rem;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+    .container {
+        padding: 20px;
+    }
+
+    .dashboard-nav {
+        flex-direction: column;
+    }
+
+    .tab-btn {
+        width: 100%;
+    }
+
+    .grades-grid {
+        grid-template-columns: 1fr;
+    }
+  }
